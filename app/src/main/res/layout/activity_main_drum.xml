@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityDrum">
+
+
+    <ImageView
+        android:id="@+id/ivMainCircle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/maldivies" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/ivDrum"
+        android:layout_width="252dp"
+        android:layout_height="267dp"
+        android:layout_marginBottom="220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pole" />
+
+    <ImageView
+        android:id="@+id/ivWinDiscount"
+        android:layout_width="281dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="85dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivMainCircle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivMainCircle"
+        app:srcCompat="@drawable/win_discount" />
+
+    <TextView
+        android:id="@+id/tvWinDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="111dp"
+        android:layout_marginEnd="112dp"
+        android:text="TextView"
+        android:textColor="@color/lightorange"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivWinDiscount"
+        app:layout_constraintEnd_toEndOf="@+id/ivWinDiscount"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/ivWinDiscount"
+        app:layout_constraintTop_toTopOf="@+id/ivWinDiscount"
+        app:layout_constraintVertical_bias="0.32" />
+
+
+    <ImageView
+        android:id="@+id/btDrum"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivDrum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvStartDrum"
+        android:layout_width="79dp"
+        android:layout_height="19dp"
+        android:text="Start"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btDrum"
+        app:layout_constraintEnd_toEndOf="@+id/btDrum"
+        app:layout_constraintStart_toStartOf="@+id/btDrum"
+        app:layout_constraintTop_toTopOf="@+id/btDrum" />
+
+    <TextView
+        android:id="@+id/tvComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="55dp"
+        android:text="* send photo of discount to our email address"
+        android:textColor="@color/dark_blue"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMainCircle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/swLangDrum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="ENG"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLangDrum"
+        android:layout_width="39dp"
+        android:layout_height="26dp"
+        android:text="UKR"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/swLangDrum"
+        app:layout_constraintStart_toEndOf="@+id/swLangDrum"
+        app:layout_constraintTop_toTopOf="@+id/swLangDrum" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

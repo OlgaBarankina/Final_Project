@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4"
+    tools:context="Location.MainActivityLocation">
+
+
+    <TextView
+        android:id="@+id/tvlatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="80dp"
+        android:text="Latitude :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvlongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Longitude :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvlatitude"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvlatitude"
+        app:layout_constraintTop_toBottomOf="@+id/tvlatitude" />
+
+
+    <TextView
+        android:id="@+id/tvgetlatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="80dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btlocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toEndOf="@+id/tvlatitude"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvgetlongitude"
+        android:layout_width="81dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btlocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toEndOf="@+id/tvlongitude"
+        app:layout_constraintTop_toBottomOf="@+id/tvgetlatitude"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ImageView
+        android:id="@+id/btlocation"
+        android:layout_width="190dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlongitude"
+        app:layout_constraintVertical_bias="0.095"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvCheckLoginAllApp"
+        android:layout_width="150dp"
+        android:layout_height="28dp"
+        android:text="Set Your Location"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btlocation"
+        app:layout_constraintEnd_toEndOf="@+id/btlocation"
+        app:layout_constraintStart_toStartOf="@+id/btlocation"
+        app:layout_constraintTop_toTopOf="@+id/btlocation"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <ImageView
+        android:id="@+id/btbranch"
+        android:layout_width="190dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btlocation"
+        app:layout_constraintVertical_bias="0.095"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvGetBranch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Nearest Branch"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btbranch"
+        app:layout_constraintEnd_toEndOf="@+id/btbranch"
+        app:layout_constraintStart_toStartOf="@+id/btbranch"
+        app:layout_constraintTop_toTopOf="@+id/btbranch"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <TextView
+        android:id="@+id/tvBranch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btbranch" />
+
+    <ImageView
+        android:id="@+id/ivMyLocation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btlocation"
+        app:srcCompat="@drawable/googlemaps" />
+
+    <Switch
+        android:id="@+id/swLangLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="ENG"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLangLocation"
+        android:layout_width="39dp"
+        android:layout_height="26dp"
+        android:text="UKR"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/swLangLocation"
+        app:layout_constraintStart_toEndOf="@+id/swLangLocation"
+        app:layout_constraintTop_toTopOf="@+id/swLangLocation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

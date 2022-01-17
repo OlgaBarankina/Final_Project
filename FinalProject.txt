@@ -1,0 +1,621 @@
+package Location
+
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.*
+import android.os.Build
+import android.os.Bundle
+import android.widget.TextView
+import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.final_project.R
+import java.util.*
+
+
+class MainActivityLocation : AppCompatActivity() {
+
+    var locationManager: LocationManager? = null
+    var locationListener: LocationListener? = null
+    var geocoder: Geocoder? = null
+    var latitude: TextView? = null
+    var longitude: TextView? = null
+    var city: TextView? = null
+    var postcode: TextView? = null
+    var country: TextView? = null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main_location)
+
+
+        val locationListenerGPS: LocationListener = object : LocationListener {
+            override fun onLocationChanged(locationGPS: Location) {
+                println(java.lang.Double.toString(locationGPS.longitude))
+                println(java.lang.Double.toString(locationGPS.latitude))
+            }
+
+            override fun onStatusChanged(s: String, i: Int, bundle: Bundle) {}
+            override fun onProviderEnabled(s: String) {}
+            override fun onProviderDisabled(s: String) {}
+        }
+
+
+
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE)
+
+        val locationListener: LocationListener = object : LocationListener {
+            override fun onLocationChanged(locationGPS: Location) {
+                println(locationGPS.longitude.toString())
+                println(locationGPS.latitude.toString())
+            }
+
+            override fun onStatusChanged(s: String, i: Int, bundle: Bundle) {}
+            override fun onProviderEnabled(s: String) {}
+            override fun onProviderDisabled(s: String) {}
+        }
+
+
+        // asking permission starts here
+        if (Build.VERSION.SDK_INT < 23) {
+
+            // api level lower than 23 so no need to ask for permission
+
+            try {
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    0,
+                    0,
+                    locationListener
+                )
+
+            } catch (SecurityException e) {
+
+                e.printStackTrace()
+            }
+        } else {
+
+            // api level greater than or equal to 23 checking if has permission if not VVVV this condition
+            // means go ask for permission
+
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                ActivityCompat.requestPermissions(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    0
+                )
+            } else {
+
+                // means api level greater than or equal to 23 and already has permission
+                // so no need to go out and ask for permission
+
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    0,
+                    0,
+                    locationListener
+                )
+
+
+                // last known location because we went to this part means we have been here before
+                Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                if (lastKnownLocation != null) {
+                    updateLocationInfo(lastKnownLocation)
+                }
+
+            }
+
+        }
+
+
+
+        fun updateLocationInfo(Location location) {
+
+            geocoder = Geocoder (getApplicationContext(), Locale.getDefault())
+
+            try {
+
+                List<Address> locationAddress = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1)
+                if (locationAddress != null && locationAddress.size() > 0) {
+
+                    latitude.setText(
+                        "Latitude: " + String.valueOf(
+                            locationAddress.get(0).getLatitude()
+                        )
+                    )
+                    longitude.setText(
+                        "Longitude: " + String.valueOf(
+                            locationAddress.get(0).getLongitude()
+                        )
+                    )
+                    city.setText("City: " + String.valueOf(locationAddress.get(0).getLocality()));
+                    postcode.setText(
+                        "Post Code: " + String.valueOf(
+                            locationAddress.get(0).getPostalCode()
+                        )
+                    )
+                    country.setText(
+                        "Country: " + String.valueOf(
+                            locationAddress.get(0).getCountryName()
+                        )
+                    )
+
+                }
+
+
+            } catch (Exception e) {
+
+            }
+
+        }
+
+        fun onRequestPermissionsResult(
+            requestCode : Int
+            permissions : String
+            grantResults : Int
+        ) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+            if (grantResults.length > 0 && grantResults(0) == PackageManager.PERMISSION_GRANTED) {
+
+                startListening()
+
+            }
+        }
+
+        
+        fun startListening() {
+
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    0,
+                    0,
+                    locationListener
+                )
+
+            }
+
+        }
+    }
+}
+
+--------------------------------
+
+ private lateinit var timer: Timer
+    private var locationManager: LocationManager? = null
+    private lateinit var locationCallBack: LocationCallBack
+    private var gpsEnabled = false
+    private var networkEnabled = false
+
+
+var locationListener: LocationListener = object : LocationListener {
+
+        override fun onLocationChanged(location: Location) {
+            timer.cancel()
+            locationCallBack.locationResult(location)
+        }
+
+        override fun onProviderDisabled(provider: String) {}
+        override fun onProviderEnabled(provider: String) {}
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+    }
+        
+
+        
+        fun getLocation(context : Context, callBack: LocationCallBack): Boolean {
+            locationCallBack = callBack
+            if (locationManager == null)
+                locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+
+            // будут выброшены исключения, если поставщик не разрешен.
+            try {
+                gpsEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+
+            try {
+                networkEnabled = locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+
+            // не запускать слушателей, если не включен провайдер
+            if (!gpsEnabled && !networkEnabled)
+                return false
+
+            val criteria = Criteria()
+            if (gpsEnabled) {
+                criteria.accuracy = Criteria.ACCURACY_FINE
+            } else {
+                criteria.accuracy = Criteria.ACCURACY_COARSE
+            }
+            locationManager!!.requestSingleUpdate(criteria, locationListener, null)
+
+            timer = Timer()
+            timer.schedule(GetLastKnownLocation(), 5000)
+            return true
+        }
+
+        inner class GetLastKnownLocation : TimerTask() {
+
+            override fun run() {
+                locationManager!!.removeUpdates(locationListener)
+
+                var netLoc: Location? = null
+                var gpsLoc: Location? = null
+
+                if (gpsEnabled)
+                    gpsLoc = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                if (networkEnabled)
+                    netLoc = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+
+                // проверяем, какое значение использовать последнее
+                if (gpsLoc != null && netLoc != null) {
+                    if (gpsLoc.time > netLoc.time)
+                        locationCallBack.locationResult(gpsLoc)
+                    else
+                        locationCallBack.locationResult(netLoc)
+                    return
+                }
+
+                if (gpsLoc != null) {
+                    locationCallBack.locationResult(gpsLoc)
+                    return
+                }
+                if (netLoc != null) {
+                    locationCallBack.locationResult(netLoc)
+                    return
+                }
+                locationCallBack.locationResult(null)
+            }
+        }
+
+    
+        interface LocationCallBack {
+            fun locationResult(location: Location?)
+       
+    }
+
+
+    AppLocationProvider().getLocation(context, object : AppLocationProvider.LocationCallBack {
+        override fun locationResult(location: Location?) {
+        }
+    })
+
+
+-----------------------
+
+package Location
+
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.*
+import android.os.Build
+import android.os.Bundle
+import android.widget.TextView
+import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.final_project.R
+import java.util.*
+
+
+class MainActivityLocation : AppCompatActivity() {
+
+
+    private lateinit var timer: Timer
+    private var locationManager: LocationManager? = null
+    private lateinit var locationCallBack: LocationCallBack
+    private var gpsEnabled = false
+    private var networkEnabled = false
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main_location)
+
+        getLocation(0)
+        
+        
+    }
+
+    var locationListener: LocationListener = object : LocationListener {
+
+        override fun onLocationChanged(location: Location) {
+            timer.cancel()
+            locationCallBack.locationResult(location)
+        }
+
+        override fun onProviderDisabled(provider: String) {}
+        override fun onProviderEnabled(provider: String) {}
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+    }
+
+
+    fun getLocation(context: Context, callBack: LocationCallBack): Boolean {
+        locationCallBack = callBack
+        if (locationManager == null)
+            locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+
+
+        try {
+            gpsEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+
+        try {
+            networkEnabled = locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+
+
+        if (!gpsEnabled && !networkEnabled)
+            return false
+
+        val criteria = Criteria()
+        if (gpsEnabled) {
+            criteria.accuracy = Criteria.ACCURACY_FINE
+        } else {
+            criteria.accuracy = Criteria.ACCURACY_COARSE
+        }
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            return false
+        }
+        locationManager!!.requestSingleUpdate(criteria, locationListener, null)
+
+        timer = Timer()
+        timer.schedule(GetLastKnownLocation(), 5000)
+        return true
+    }
+
+
+
+
+   inner class GetLastKnownLocation : TimerTask() {
+
+        override fun run() {
+            locationManager!!.removeUpdates(locationListener)
+
+            var netLoc: Location? = null
+            var gpsLoc: Location? = null
+
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                return
+            }
+            if (gpsEnabled)
+                gpsLoc = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                return
+            }
+            if (networkEnabled)
+                netLoc = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+
+            // проверяем, какое значение использовать последнее
+            if (gpsLoc != null && netLoc != null) {
+                if (gpsLoc.time > netLoc.time)
+                    locationCallBack.locationResult(gpsLoc)
+                else
+                    locationCallBack.locationResult(netLoc)
+                return
+            }
+
+            if (gpsLoc != null) {
+                locationCallBack.locationResult(gpsLoc)
+                return
+            }
+            if (netLoc != null) {
+                locationCallBack.locationResult(netLoc)
+                return
+            }
+            locationCallBack.locationResult(null)
+        }
+    }
+
+
+
+    interface LocationCallBack {
+        fun locationResult(location: Location?) }
+}
+
+
+
+--------------
+
+private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+
+  fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+
+        obtieneLocalizacion()
+
+    }
+
+
+
+    private fun obtieneLocalizacion(){
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+            return
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                tvlatitude = location?.latitude
+                var longitude = location?.longitude
+                latitude = tvlatitude
+                
+            }
+    }
+}
+
+
+-------!!!!!!!!!!!!-----
+
+package Location
+
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.*
+import android.os.Build
+import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
+import android.widget.Toolbar
+import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.final_project.R
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import kotlinx.android.synthetic.main.activity_main_location.*
+import java.util.*
+
+
+class MainActivityLocation : AppCompatActivity() {
+
+    private var locationManager: LocationManager? = null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main_location)
+        //setSupportActionBar(Toolbar)
+
+
+        //define the listener
+        val locationListener: LocationListener = object : LocationListener {
+            override fun onLocationChanged(location: Location) {
+                tvloc.text = ("" + location.longitude + ":" + location.latitude)
+            }
+
+            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+            override fun onProviderEnabled(provider: String) {}
+            override fun onProviderDisabled(provider: String) {}
+        }
+
+
+        val locationListenerGPS: LocationListener = object : LocationListener {
+            @SuppressLint("SetTextI18n")
+            override fun onLocationChanged(locationGPS: Location) {
+                tvloc.text = (locationGPS.longitude.toString()) + (locationGPS.latitude.toString())
+            }
+
+            override fun onStatusChanged(s: String, i: Int, bundle: Bundle) {}
+            override fun onProviderEnabled(s: String) {}
+            override fun onProviderDisabled(s: String) {}
+        }
+
+
+        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+
+        btloc.setOnClickListener { view ->
+            try {
+                // Request location updates
+                locationManager?.requestLocationUpdates(
+                    //LocationManager.NETWORK_PROVIDER,
+                    LocationManager.GPS_PROVIDER,
+                    1000L,
+                    10f,
+                    //locationListener
+                    locationListenerGPS
+                )
+            } catch (ex: SecurityException) {
+                Log.d("MyLogFinalProject", "Security Exception, no location available")
+            }
+        }
+
+
+
+
+    }
+
+
+
+}
+
+
+1. Bohdana Khmel'nyts'koho St, 24, Kyiv, Ukraine, 02000
+50.4459, 30.5150  // 
+metro: Zoloti vorota
+
+2. Borychiv descent, 8, Kyiv, Ukraine, 02000
+50.4588, 30.5234
+metro: Poshtova ploshcha
+
+3. Brovarskyi Ave, 17, Kyiv, Ukraine, 02000
+50.4522, 30.5971
+metro: Livoberezhna
+
+4. Popudrenka St, 9А, Kyiv, Ukraine, 02000
+50.4549, 30.6119
+metro: Darnytsia
+
+5. Velyka Vasylkivska St, 36, Kyiv, Ukraine, 02000
+50.4378, 30.5157
+metro: Ploshcha Lva Tolstog
+
+
+Andriya Malyshka St, 3, Kyiv, Ukraine, 02000
+50.4583, 30.6137!!!
+
+“широта, долгота” — Lat, Lng.
+
+7144.2109375
+6412.5810546875
+1360.210693359375
+399.22589111328125
+7324.68505859375

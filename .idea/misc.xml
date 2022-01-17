@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Final_Project/app/src/main/res/drawable/my_button_countries.xml" value="0.2169230769230769" />
+        <entry key="..\:/Final_Project/app/src/main/res/drawable/my_button_countrynames.xml" value="0.2169230769230769" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_dbmain.xml" value="0.25" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_application.xml" value="0.33" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_countries.xml" value="0.24334600760456274" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_discounts.xml" value="0.25" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_drum.xml" value="0.22" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_location.xml" value="0.25" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_pull_of_applications.xml" value="0.2" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/activity_main_will_callback.xml" value="0.25" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/content_main_activity_pullof_applications.xml" value="0.1796875" />
+        <entry key="..\:/Final_Project/app/src/main/res/layout/item_discounts.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

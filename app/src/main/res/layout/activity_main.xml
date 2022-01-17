@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/maldivies" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:text="Travel Agency"
+        android:textColor="@color/white_color"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ivMain"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="@+id/ivMain"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Olga Travelling"
+        android:textColor="@color/white_color"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="+38(050)444-48-39"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="olgatravelling@ukr.net"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhone" />
+
+    <TextView
+        android:id="@+id/tvLongDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:text="Travel with us for BEST prices!"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+    <ImageView
+        android:id="@+id/ivCountiresButtom"
+        android:layout_width="190dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="310dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvCountries"
+        android:layout_width="168dp"
+        android:layout_height="20dp"
+        android:text="Countries to visit"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCountiresButtom"
+        app:layout_constraintEnd_toEndOf="@+id/ivCountiresButtom"
+        app:layout_constraintStart_toStartOf="@+id/ivCountiresButtom"
+        app:layout_constraintTop_toTopOf="@+id/ivCountiresButtom" />
+
+    <ImageView
+        android:id="@+id/ivDiscountsButtom"
+        android:layout_width="190dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCountiresButtom"
+        app:layout_constraintVertical_bias="0.039"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvDiscounts"
+        android:layout_width="138dp"
+        android:layout_height="20dp"
+        android:text="Tours with Sales"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDiscountsButtom"
+        app:layout_constraintEnd_toEndOf="@+id/ivDiscountsButtom"
+        app:layout_constraintStart_toStartOf="@+id/ivDiscountsButtom"
+        app:layout_constraintTop_toTopOf="@+id/ivDiscountsButtom" />
+
+    <ImageView
+        android:id="@+id/ivApplication"
+        android:layout_width="190dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivDiscountsButtom"
+        app:layout_constraintStart_toStartOf="@+id/ivDiscountsButtom"
+        app:layout_constraintTop_toBottomOf="@+id/ivDiscountsButtom"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvApplication"
+        android:layout_width="138dp"
+        android:layout_height="20dp"
+        android:text="Leave Application"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivApplication"
+        app:layout_constraintEnd_toEndOf="@+id/ivApplication"
+        app:layout_constraintStart_toStartOf="@+id/ivApplication"
+        app:layout_constraintTop_toTopOf="@+id/ivApplication"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/ivGetDiscount"
+        android:layout_width="190dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivApplication"
+        app:layout_constraintStart_toStartOf="@+id/ivApplication"
+        app:layout_constraintTop_toBottomOf="@+id/ivApplication"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvGetDiscount"
+        android:layout_width="138dp"
+        android:layout_height="20dp"
+        android:text="Get Discount"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivGetDiscount"
+        app:layout_constraintEnd_toEndOf="@+id/ivGetDiscount"
+        app:layout_constraintStart_toStartOf="@+id/ivGetDiscount"
+        app:layout_constraintTop_toTopOf="@+id/ivGetDiscount"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Switch
+        android:id="@+id/swLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="ENG"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="39dp"
+        android:layout_height="26dp"
+        android:text="UKR"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/swLanguage"
+        app:layout_constraintStart_toEndOf="@+id/swLanguage"
+        app:layout_constraintTop_toTopOf="@+id/swLanguage" />
+
+
+    <ImageView
+        android:id="@+id/ivButtonLocation"
+        android:layout_width="190dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivGetDiscount"
+        app:layout_constraintStart_toStartOf="@+id/ivGetDiscount"
+        app:layout_constraintTop_toBottomOf="@+id/ivGetDiscount"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvButtonLocation"
+        android:layout_width="138dp"
+        android:layout_height="20dp"
+        android:text="Our Branches"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivButtonLocation"
+        app:layout_constraintEnd_toEndOf="@+id/ivButtonLocation"
+        app:layout_constraintStart_toStartOf="@+id/ivButtonLocation"
+        app:layout_constraintTop_toTopOf="@+id/ivButtonLocation"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4"
+    tools:context="Firebase.DBMainActivity">
+
+    <ImageView
+        android:id="@+id/ivappForm"
+        android:layout_width="416dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvApp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/application_form" />
+
+    <TextView
+        android:id="@+id/tvApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:text="Hello World!"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/clLogin"
+        android:layout_width="match_parent"
+        android:layout_height="729dp"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/tvLoginAllApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="150dp"
+            android:text="Login Name: "
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.177" />
+
+        <EditText
+            android:id="@+id/edLoginAllApp"
+            android:layout_width="121dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="230dp"
+            android:ems="5"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tvLoginAllApp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPasswordAllApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:text="Password:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvLoginAllApp"
+            app:layout_constraintStart_toStartOf="@+id/tvLoginAllApp"
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginAllApp" />
+
+        <EditText
+            android:id="@+id/edPasswordAllApp"
+            android:layout_width="121dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="14dp"
+            android:ems="5"
+            android:inputType="numberPassword"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edLoginAllApp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvPasswordAllApp"
+            app:layout_constraintStart_toStartOf="@+id/edLoginAllApp"
+            app:layout_constraintTop_toBottomOf="@+id/edLoginAllApp"
+            app:layout_constraintVertical_bias="0.024" />
+
+        <ImageView
+            android:id="@+id/btStartAllApp"
+            android:layout_width="106dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edPasswordAllApp"
+            app:layout_constraintVertical_bias="0.095"
+            app:srcCompat="@drawable/my_button_countries" />
+
+        <TextView
+            android:id="@+id/tvCheckLoginAllApp"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textColor="@color/white_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btStartAllApp"
+            app:layout_constraintEnd_toEndOf="@+id/btStartAllApp"
+            app:layout_constraintStart_toStartOf="@+id/btStartAllApp"
+            app:layout_constraintTop_toTopOf="@+id/btStartAllApp"
+            app:layout_constraintVertical_bias="0.5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

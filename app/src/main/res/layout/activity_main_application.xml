@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityApplication"
+    android:background="#03A9F4">
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:text="Name and Surname"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvCountryVisit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="25dp"
+        android:text="Country for visit"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <TextView
+        android:id="@+id/tvDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="25dp"
+        android:text="Days for stay"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvCountryVisit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvCountryVisit"
+        app:layout_constraintTop_toBottomOf="@+id/tvCountryVisit" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="25dp"
+        android:text="Phone"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvDays"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvDays"
+        app:layout_constraintTop_toBottomOf="@+id/tvDays" />
+
+    <EditText
+        android:id="@+id/edEnterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="24dp"
+        android:defaultFocusHighlightEnabled="false"
+        android:ems="8"
+        android:fontFamily="sans-serif-black"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorLink="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edEnterCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:ems="8"
+        android:inputType="text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edEnterName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edEnterName"
+        app:layout_constraintTop_toBottomOf="@+id/edEnterName" />
+
+    <EditText
+        android:id="@+id/edDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:ems="8"
+        android:inputType="numberDecimal"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edEnterCountry"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edEnterCountry"
+        app:layout_constraintTop_toBottomOf="@+id/edEnterCountry" />
+
+    <EditText
+        android:id="@+id/edPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:ems="8"
+        android:inputType="numberDecimal"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edDays"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edDays"
+        app:layout_constraintTop_toBottomOf="@+id/edDays" />
+
+
+    <ImageView
+        android:id="@+id/btStart"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginBottom="368dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDays"
+        app:layout_constraintVertical_bias="0.06"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvStartapp"
+        android:layout_width="138dp"
+        android:layout_height="20dp"
+        android:text="Send"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btStart"
+        app:layout_constraintEnd_toEndOf="@+id/btStart"
+        app:layout_constraintStart_toStartOf="@+id/btStart"
+        app:layout_constraintTop_toTopOf="@+id/btStart"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btStart"
+        app:srcCompat="@drawable/application_form" />
+
+    <Switch
+        android:id="@+id/swLangApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="ENG"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLangApp"
+        android:layout_width="39dp"
+        android:layout_height="26dp"
+        android:text="UKR"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/swLangApp"
+        app:layout_constraintStart_toEndOf="@+id/swLangApp"
+        app:layout_constraintTop_toTopOf="@+id/swLangApp" />
+
+
+    <ImageView
+        android:id="@+id/buttonDB"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/my_button_countries" />
+
+    <TextView
+        android:id="@+id/tvbuttonDB"
+        android:layout_width="138dp"
+        android:layout_height="20dp"
+        android:text="For Developers"
+        android:textAlignment="center"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDB"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDB"
+        app:layout_constraintStart_toStartOf="@+id/buttonDB"
+        app:layout_constraintTop_toTopOf="@+id/buttonDB"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

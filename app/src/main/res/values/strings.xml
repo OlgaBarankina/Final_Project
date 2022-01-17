@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">homeTask_40</string>
+    <string name="andorra">Andorra</string>
+    <string name="france">France</string>
+    <string name="dominic_republic">Dominicana</string>
+    <string name="thailand">Thailand</string>
+    <string name="emirates">Emirates</string>
+    <string name="title_activity_main_discounts">MainActivityDiscounts</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main_will_callback">MainActivityWillCallback</string>
+    <string name="title_activity_main_drum">MainActivityDrum</string>
+    <string name="title_activity_main_pullof_applications">MainActivityPullofApplications</string>
+</resources>
